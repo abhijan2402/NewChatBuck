@@ -26,7 +26,7 @@ const App = () => {
 
         <NavigationContainer>
           {
-            User ?
+            !User ?
               <MainNavigation /> :
               <AuthStack />
 

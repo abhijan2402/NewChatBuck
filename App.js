@@ -6,7 +6,11 @@ import Call from './Screens/Call';
 import MainNavigation from './Screens/MainNavigation';
 import SignIn from './Screens/Auth/SignIn';
 import SignUp from './Screens/Auth/SignUp';
-import AuthStack from './Screens/AuthStack';
+// import AuthStack from './Screens/AuthStack';
+import ForgotPassword from './Screens/Auth/ForgotPassword';
+import Chat from './Screens/Chat';
+import Profile from './Screens/Profile';
+import ChatScreen from './Screens/ChatScreen';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -25,12 +29,20 @@ const App = () => {
       {
 
         <NavigationContainer>
-          {
-            !User ?
-              <MainNavigation /> :
-              <AuthStack />
+          <Stack.Navigator initialRouteName='SignUp' screenOptions={{
+            headerShown: false
+          }}>
+            {/* <> */}
+            <Stack.Screen name="SignIn" component={SignIn} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="Forgot" component={ForgotPassword} />
+            <Stack.Screen name="MainNavigate" component={MainNavigation} />
+            <Stack.Screen name="Chat" component={Chat} />
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="ChatScreen" component={ChatScreen} />
+            {/* </> */}
 
-          }
+          </Stack.Navigator>
         </NavigationContainer>
 
 

@@ -6,65 +6,66 @@ import People from '../Screens/People';
 import Wallet from '../Screens/Wallet';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import HomeStack from './Stack/HomeStack';
 const Tab = createBottomTabNavigator();
 
 
 const MainNavigation = () => {
   return (
-  <Tab.Navigator
-  screenOptions={{
-    headerShown:false,
-   
-    tabBarShowLabel: false,
-    showIcon: false,
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
 
-        tabBarStyle:[ {
-          position:"absolute",
-          elevation:0,
-          backgroundColor:"#ffffff",
-          height:70,
+        tabBarShowLabel: false,
+        showIcon: false,
+
+        tabBarStyle: [{
+          position: "absolute",
+          elevation: 0,
+          backgroundColor: "#ffffff",
+          height: 70,
           ...styles.shadow
         },],
         activeTintColor: 'pink',
       }}>
 
-        <Tab.Screen name="Chat" component={Chat} options={{
-        tabBarIcon:({focused})=>(
-          <View style={{alignItems:'center',justifyContent:'center'}}>
-              <Ionicons name='chatbubbles-sharp'  color={focused ? '#047BD5' : 'black'} size={22}/>
-            <Text style={{color:focused ? '#047BD5' : 'black',fontFamily:"SourceSansPro-Regular"}}>Chats</Text>
+      <Tab.Screen name="HomeStack" component={Chat} options={{
+        tabBarIcon: ({ focused }) => (
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <Ionicons name='chatbubbles-sharp' color={focused ? '#047BD5' : 'black'} size={22} />
+            <Text style={{ color: focused ? '#047BD5' : 'black', fontFamily: "SourceSansPro-Regular" }}>Chats</Text>
           </View>
         )
-      }}/>
+      }} />
 
-       <Tab.Screen name="Wallet" component={Wallet} options={{
-        tabBarIcon:({focused})=>(
-          <View style={{alignItems:'center',justifyContent:'center'}}>
-              <Ionicons name='wallet'  color={focused ? '#047BD5' : 'black'} size={22}/>
-            <Text style={{color:focused ? '#047BD5' : 'black',fontFamily:"SourceSansPro-Regular"}}>Wallet</Text>
+      <Tab.Screen name="Wallet" component={Wallet} options={{
+        tabBarIcon: ({ focused }) => (
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <Ionicons name='wallet' color={focused ? '#047BD5' : 'black'} size={22} />
+            <Text style={{ color: focused ? '#047BD5' : 'black', fontFamily: "SourceSansPro-Regular" }}>Wallet</Text>
           </View>
         )
-      }}/>
+      }} />
 
-        <Tab.Screen name="People" component={People} options={{
-        tabBarIcon:({focused})=>(
-          <View style={{alignItems:'center',justifyContent:'center'}}>
-              <Ionicons name='people'  color={focused ? '#047BD5' : 'black'} size={22}/>
-            <Text style={{color:focused ? '#047BD5' : 'black',fontFamily:"SourceSansPro-Regular"}}>People</Text>
+      <Tab.Screen name="People" component={People} options={{
+        tabBarIcon: ({ focused }) => (
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <Ionicons name='people' color={focused ? '#047BD5' : 'black'} size={22} />
+            <Text style={{ color: focused ? '#047BD5' : 'black', fontFamily: "SourceSansPro-Regular" }}>People</Text>
           </View>
         )
-      }}/>
-       
-       <Tab.Screen name="Call" component={Call} options={{
-        tabBarIcon:({focused})=>(
-          <View style={{alignItems:'center',justifyContent:'center'}}>
-              <Ionicons name='ios-call'  color={focused ? '#047BD5' : 'black'} size={22}/>
-            <Text style={{color:focused ? '#047BD5' : 'black',fontFamily:"SourceSansPro-Regular"}}>Call</Text>
-          </View>
-        )
-      }}/>
+      }} />
 
-  </Tab.Navigator>
+      <Tab.Screen name="Call" component={Call} options={{
+        tabBarIcon: ({ focused }) => (
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <Ionicons name='ios-call' color={focused ? '#047BD5' : 'black'} size={22} />
+            <Text style={{ color: focused ? '#047BD5' : 'black', fontFamily: "SourceSansPro-Regular" }}>Call</Text>
+          </View>
+        )
+      }} />
+
+    </Tab.Navigator>
   )
 }
 

@@ -1,150 +1,174 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Image, Alert } from 'react-native';
-import { createIconSetFromFontello } from 'react-native-vector-icons';
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-const Call = () => {
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Modal, Pressable, LogBox, Image, ScrollView, TextInput, ActivityIndicator, ImageBackground } from 'react-native';
+const windoWidth = Dimensions.get('window').width;
+const windoHeight = Dimensions.get('window').height;
+const Call = ({ navigation }) => {
   return (
-    <View style={styles.Header}>
-      <View style={styles.ProfileTextView}>
-        <Text style={styles.ProfileText}>Profile</Text>
-      </View>
-      <View style={styles.MainProfileview}>
-        <View style={styles.MainProfileInnerview}>
-          {/* {
-            getAllDetails.gender == "Male" ? <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/236/236831.png" }} style={{ width: 70, height: 70, color: "white" }} />
-              : <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/6997/6997662.png" }} style={{ width: 70, height: 70, color: "white" }} />
-          } */}
-          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/2202/2202112.png" }} style={{ width: 70, height: 70, color: "white" }} />
+    <View style={styles.MainView}>
+      <View style={styles.MainViewTop}>
+        <Text style={styles.ChatBucktext}>Calls</Text>
+        <View style={styles.ImageTopHead}>
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/149/149852.png" }} style={[styles.ImageHead, { width: 27, height: 27, alignItems: "center", alignSelf: "center" }]} />
         </View>
-        <View style={[styles.MainProfileInnerview, { width: windowWidth / 1.5, alignItems: "flex-start" }]}>
-          <Text style={[styles.InfoText, { fontSize: 22, fontFamily: "SourceSansPro-Bold", color: "black" }]}>Abhishek</Text>
-          <Text style={[styles.InfoText]}>abhishek.jangid643@gmail.com</Text>
-        </View>
+        <TouchableOpacity style={styles.ImageTopHead} onPress={() => { navigation.navigate('Profile') }}>
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/236/236831.png" }} style={styles.ImageHead} />
+        </TouchableOpacity>
       </View>
-      <View style={{ paddingVertical: 10, marginBottom: 15 }}>
-        <Text style={{ fontFamily: "SourceSansPro-Bold", fontSize: 15, marginHorizontal: 20, marginVertical: 10, color: "grey" }}>My Status</Text>
-        <View style={{ display: "flex", flexDirection: "row", padding: 8 }}>
 
-          <View style={{ display: "flex", flexDirection: "row", marginHorizontal: 10 }}>
-            <TouchableOpacity style={{ display: "flex", flexDirection: "row", paddingHorizontal: 15, paddingVertical: 6, borderRadius: 30, alignItems: "center", backgroundColor: "#373738" }}
-              onPress={() => navigation.navigate("Feedback")}
-            >
-              <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/742/742751.png" }} style={{ width: 20, height: 20, color: "white" }} />
-              <Text style={{ fontSize: 15, color: "white", marginHorizontal: 3, fontFamily: "SourceSansPro-Bold" }}> FeedBack</Text>
-            </TouchableOpacity>
+      <ScrollView style={styles.ChatView}>
+        <View style={styles.UserProCol}>
+          <Image source={{ uri: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" }} style={styles.UserProfImg} />
+          <View style={styles.CallWidth}>
+            <Text style={styles.UserName}>Secbj</Text>
+            <Text style={styles.UserStatus}>hey i am using the chatbuck</Text>
           </View>
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/483/483947.png" }} style={styles.Calls} />
         </View>
-      </View>
-      <View style={styles.MenuSection}>
-        <View style={styles.OptionView}>
-          <Text style={styles.OptionViewText}>Options</Text>
+        <View style={styles.UserProCol}>
+          <Image source={{ uri: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" }} style={styles.UserProfImg} />
+          <View style={styles.CallWidth}>
+            <Text style={styles.UserName}>Secbj</Text>
+            <Text style={styles.UserStatus}>hey i am using the chatbuck</Text>
+          </View>
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/483/483947.png" }} style={styles.Calls} />
         </View>
-        <TouchableOpacity style={{ display: "flex", flexDirection: "row", alignItems: "center", marginHorizontal: 15, paddingVertical: 5, borderRadius: 13, marginVertical: 7 }} onPress={() => navigation.navigate("Userprofile")}>
-          <View style={[styles.MainProfileInnerview1, {}]}>
-            <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/1144/1144709.png" }} style={{ width: 40, height: 40, color: "white" }} />
+        <View style={styles.UserProCol}>
+          <Image source={{ uri: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" }} style={styles.UserProfImg} />
+          <View style={styles.CallWidth}>
+            <Text style={styles.UserName}>Secbj</Text>
+            <Text style={styles.UserStatus}>hey i am using the chatbuck</Text>
           </View>
-          <View style={{ width: windowWidth / 2 }}>
-            <Text style={{ fontSize: 18, fontFamily: "SourceSansPro-Bold", color: "black" }}>UserDetail</Text>
-          </View>
-          <View style={styles.MainProfileInnerview1}>
-            <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/2989/2989988.png" }} style={{ width: 30, height: 30, color: "white" }} />
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={{ display: "flex", flexDirection: "row", alignItems: "center", marginHorizontal: 15, paddingVertical: 5, borderRadius: 13, marginVertical: 7 }} onPress={() => navigation.navigate("Dashboard")}>
-          <View style={styles.MainProfileInnerview1}>
-            <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/9115/9115400.png" }} style={{ width: 40, height: 40, color: "white" }} />
-          </View>
-          <View style={{ width: windowWidth / 2, }}>
-            <Text style={{ fontSize: 18, fontFamily: "SourceSansPro-Bold", color: "black" }}>MyAccount</Text>
-          </View>
-          <View style={styles.MainProfileInnerview1}>
-            <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/2989/2989988.png" }} style={{ width: 30, height: 30, color: "white" }} />
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={{ display: "flex", flexDirection: "row", alignItems: "center", marginHorizontal: 15, paddingVertical: 5, borderRadius: 13, marginVertical: 7 }} onPress={() => navigation.navigate("QuizNavigation")}>
-          <View style={styles.MainProfileInnerview1}>
-            <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/7111/7111141.png" }} style={{ width: 40, height: 40, color: "white" }} />
-          </View>
-          <View style={{ width: windowWidth / 2, }}>
-            <Text style={{ fontSize: 18, fontFamily: "SourceSansPro-Bold", color: "black" }}>Status</Text>
-          </View>
-          <View style={styles.MainProfileInnerview1}>
-            <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/2989/2989988.png" }} style={{ width: 30, height: 30, color: "white" }} />
-          </View>
-        </TouchableOpacity>
-        <View style={{ marginHorizontal: 15, padding: 10, marginTop: 30 }}>
-          <Text style={{ marginVertical: 5, fontFamily: "SourceSansPro-Bold", fontSize: 15, color: "grey" }}>My Account</Text>
-          <TouchableOpacity ><Text style={{ fontWeight: "bold", fontSize: 18, color: "red", marginVertical: 5, fontFamily: "SourceSansPro-Regular" }}>Log Out</Text></TouchableOpacity>
-
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/483/483947.png" }} style={styles.Calls} />
         </View>
-      </View>
-    </View >
+        <View style={styles.UserProCol}>
+          <Image source={{ uri: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" }} style={styles.UserProfImg} />
+          <View style={styles.CallWidth}>
+            <Text style={styles.UserName}>Secbj</Text>
+            <Text style={styles.UserStatus}>hey i am using the chatbuck</Text>
+          </View>
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/483/483947.png" }} style={styles.Calls} />
+        </View>
+        <View style={styles.UserProCol}>
+          <Image source={{ uri: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" }} style={styles.UserProfImg} />
+          <View style={styles.CallWidth}>
+            <Text style={styles.UserName}>Secbj</Text>
+            <Text style={styles.UserStatus}>hey i am using the chatbuck</Text>
+          </View>
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/483/483947.png" }} style={styles.Calls} />
+        </View>
+        <View style={styles.UserProCol}>
+          <Image source={{ uri: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" }} style={styles.UserProfImg} />
+          <View style={styles.CallWidth}>
+            <Text style={styles.UserName}>Secbj</Text>
+            <Text style={styles.UserStatus}>hey i am using the chatbuck</Text>
+          </View>
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/483/483947.png" }} style={styles.Calls} />
+        </View>
+        <View style={styles.UserProCol}>
+          <Image source={{ uri: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" }} style={styles.UserProfImg} />
+          <View style={styles.CallWidth}>
+            <Text style={styles.UserName}>Secbj</Text>
+            <Text style={styles.UserStatus}>hey i am using the chatbuck</Text>
+          </View>
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/483/483947.png" }} style={styles.Calls} />
+        </View>
+        <View style={styles.UserProCol}>
+          <Image source={{ uri: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" }} style={styles.UserProfImg} />
+          <View style={styles.CallWidth}>
+            <Text style={styles.UserName}>Secbj</Text>
+            <Text style={styles.UserStatus}>hey i am using the chatbuck</Text>
+          </View>
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/483/483947.png" }} style={styles.Calls} />
+        </View>
+        <View style={styles.UserProCol}>
+          <Image source={{ uri: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" }} style={styles.UserProfImg} />
+          <View style={styles.CallWidth}>
+            <Text style={styles.UserName}>Secbj</Text>
+            <Text style={styles.UserStatus}>hey i am using the chatbuck</Text>
+          </View>
+          <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/483/483947.png" }} style={styles.Calls} />
+        </View>
+      </ScrollView>
+    </View>
   )
 }
 
 export default Call
 const styles = StyleSheet.create({
-  Header: {
-    height: windowHeight,
-    width: windowWidth,
-    backgroundColor: "white"
+  MainView: {
+    height: windoHeight,
+    backgroundColor: "#1081AF"
   },
-  ProfileTextView: {
+  MainViewTop: {
     // borderWidth: 1,
-    height: windowHeight / 10,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  ProfileText: {
-    fontSize: 30,
-    // fontWeight: "700",
-    color: "black",
-    fontFamily: "SourceSansPro-Bold"
-  },
-  MainProfileview: {
+    height: windoHeight / 6,
     display: "flex",
     flexDirection: "row",
-    width: windowWidth,
-    // borderWidth: 1,
-    height: windowHeight / 8,
+    paddingVertical: 10
+    // justifyContent: "center",
+    // alignItems: "center"
   },
-  MainProfileInnerview: {
-    // borderWidth: 1,
-    marginHorizontal: 7,
-    marginLeft: 20,
-    justifyContent: "center",
-    width: windowWidth / 5,
-    alignItems: "center"
+  ImageHead: {
+    width: 30,
+    height: 30
   },
-  InfoText: {
-    fontSize: 17,
-    // fontWeight: "600",
+  ChatBucktext: {
+    fontSize: 25,
+    fontWeight: "800",
+    color: "white",
+    // borderWidth: 1,
+    width: windoWidth / 1.4,
+    paddingHorizontal: 20
+  },
+  ImageTopHead: {
+    // borderWidth: 1,
+    marginHorizontal: 10
+  },
+
+
+  ChatView: {
+    // borderWidth: 1,
+    backgroundColor: "white",
+    paddingTop: 20,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    paddingTop: 30
+  },
+  UserProCol: {
+    display: "flex",
+    flexDirection: "row",
+    paddingHorizontal: 10,
+    // borderWidth: 1,
+    marginVertical: 10,
+    borderBottomWidth: 0.3,
+    borderBottomColor: "#cacccf",
+    paddingVertical: 5,
+    marginHorizontal: 10
+  },
+  UserProfImg: {
+    width: 50,
+    height: 50,
+    alignItems: "center",
+    marginRight: 10,
+    borderRadius: 25
+  },
+  UserName: {
+    fontWeight: "700",
     color: "black",
-    marginLeft: 5,
-    fontFamily: "SourceSansPro-SemiBold"
+    fontSize: 18
   },
-  MenuSection: {
-    height: windowHeight / 1.9,
-    // borderWidth: 1
-  },
-  OptionView: {
-    // borderWidth: 1,
-    // marginVertical: 20,
-    marginTop: 20,
-    marginHorizontal: 20
-  },
-  OptionViewText: {
-    fontSize: 20,
+  UserStatus: {
     color: "grey",
-    fontFamily: "SourceSansPro-Bold"
-    // fontWeight: "700"
   },
-  MainProfileInnerview1: {
-    // borderWidth: 1,
-    marginHorizontal: 2,
-    justifyContent: "center",
-    width: windowWidth / 5,
-    alignItems: "center"
+  Calls: {
+    width: 25,
+    height: 25,
+    alignItems: "center",
+    alignSelf: "center"
   },
-});
+  CallWidth: {
+    width: windoWidth / 1.6,
+    // borderWidth: 1
+  }
+
+})

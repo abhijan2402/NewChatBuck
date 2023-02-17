@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
         height: windoHeight
     },
     LogoImage: {
-        width: 130,
-        height: 130,
+        width: 160,
+        height: 160,
         backgroundColor: "white",
         borderRadius: 20
     },
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         bottom: 0
     },
     modalView: {
-        backgroundColor: 'white',
+        backgroundColor: '#1081AF',
         borderTopRightRadius: 70,
         padding: 35,
         shadowColor: '#000',
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     modalText: {
         textAlign: 'center',
         fontWeight: "800",
-        color: "black",
+        color: "white",
         fontSize: 40
     },
     InputView: {
@@ -81,11 +81,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10
     },
     TextLabel: {
-        color: "black",
+        color: "white",
         marginLeft: 3
     },
     LogInBtn: {
-        backgroundColor: "#373935",
+        backgroundColor: "#042F57",
         justifyContent: "center",
         alignItems: "center",
         paddingVertical: 10,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     },
     ForgotPassViewText: {
         fontWeight: "800",
-        color: "#373935"
+        color: "white"
     }
 })
 export default styles;
